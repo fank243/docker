@@ -5,7 +5,7 @@
 
 *.tar.gz
 *.gz
-*.jar
+app/lib/*.jar
 
 mysql/data/
 redis/data/*.rdb
