@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  demo:
+    build:
+        context: ./
+        dockerfile: Dockerfile
+    image: fank243/demo:1.0.0
+    hostname: demo
+    container_name: demo
+    volumes:
+      - ./demo-1.0.0.jar:/app/app.jar
+      - ./config:/app/config
+      - ./lib:/app/lib
+      - ./logs:/app/logs
+    ports:
+      - "8900:8900"

@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  admin:
+    build:
+      context: ./
+      args: 
+        - JAR_PATH=lib/admin-1.0.0.jar
+      dockerfile: dockerfile/Dockerfile
+    image: fank243/admin:1.0.0
+    hostname: admin
+    container_name: admin
+#    network_mode: "host"
+    restart: on-failure
+    environment:
+      - SPRING_ACTIVE=test
+    volumes:
+      - ./lib/admin-1.0.0.jar:/app/app.jar
+      - ./config:/app/config
+      - ./lib:/app/lib
+      - ./logs/admin:/app/logs
+    ports:
+      - "8900:8900"
+    networks:
+      antstar-network
+      
+networks:
+  antstar-network:
+    name: antstar-network # 网络名称
+    driver: bridge

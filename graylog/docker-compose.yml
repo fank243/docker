@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  elasticsearch:
+    hostname: elasticsearch
+    container_name: elasticsearch
+    image: elasticsearch:6.8.6
+    restart: unless-stopped
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./elasticsearch/data:/usr/share/elasticsearch/data     # 数据目录
+      - ./elasticsearch/conf:/usr/share/elasticsearch/config   # 配置目录
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  # Graylog: https://hub.docker.com/r/graylog/graylog/      
+  graylog:
+    hostname: graylog
+    image: graylog/graylog:3.1.4
+    container_name: graylog
+    restart: unless-stopped
+    volumes:
+      # Mount local configuration directory into Docker container
+      - ./graylog/conf:/usr/share/graylog/data/config
+      - ./graylog/data:/usr/share/graylog/data/journal
+    networks:
+      - docker-network
+    ports:
+      # Graylog web interface and REST API
+      - 9000:9000
+      # Syslog TCP
+      - 1514:1514
+      # Syslog UDP
+      - 1514:1514/udp
+      # GELF TCP
+      - 12201:12201
+      # GELF UDP
+      - 12201:12201/udp
+
+networks:
+  docker-network:
+    name: docker-network
+    driver: bridge
