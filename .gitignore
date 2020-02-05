@@ -1,10 +1,14 @@
 .idea/
 .vscode/
 
-*.logs
+*.log
 
 *.tar.gz
 *.gz
+*.jar
+
+mysql/data/
+redis/data/*.rdb
 
 
 # 将空目录纳入进去
