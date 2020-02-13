@@ -9,6 +9,7 @@ app/lib/*.jar
 
 mysql/data/
 redis/data/*.rdb
+graylog/data/
 
 
 # 将空目录纳入进去
