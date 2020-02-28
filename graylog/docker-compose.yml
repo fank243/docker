@@ -9,7 +9,7 @@ services:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./elasticsearch/data:/usr/share/elasticsearch/data     # 数据目录
+      - /data/data/graylog:/usr/share/elasticsearch/data     # 数据目录
       - ./elasticsearch/conf:/usr/share/elasticsearch/config   # 配置目录
     ports:
       - 9200:9200
@@ -24,7 +24,7 @@ services:
     volumes:
       # Mount local configuration directory into Docker container
       - ./graylog/conf:/usr/share/graylog/data/config
-      - ./graylog/data:/usr/share/graylog/data/journal
+      - /data/data/graylog:/usr/share/graylog/data/journal
     networks:
       - docker-network
     ports:
