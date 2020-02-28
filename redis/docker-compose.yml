@@ -9,11 +9,11 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - ./data:/data/redis/data # redis.conf中的dir路径也需保持一致
+      - /data/data/redis:/data/redis/data # redis.conf中的dir路径也需保持一致
       - ./conf:/etc/redis
-      - ./logs:/data/redis/logs
+      - /data/logs/redis:/data/redis/logs
     ports:
-      - "8379:6379"
+      - "6379:6379"
     networks:
       docker-network
 

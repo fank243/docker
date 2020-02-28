@@ -10,7 +10,7 @@ services:
       - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - ./:/var/lib/mysql
+      - /data/data/mysql:/var/lib/mysql
       - ./conf:/etc/mysql
     ports:
       - "3306:3306"

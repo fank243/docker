@@ -1,4 +1,4 @@
-FROM fank243/jdk:1.8.0_202
+FROM fank243/dragonwell:1.8.0_232
 
 ARG SPRING_ACTIVE
 

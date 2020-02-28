@@ -5,48 +5,30 @@
 <Configuration status="WARN" monitorInterval="30">
     <Properties>
         <!--日志文件存储路径-->
-        <property name="logDir">logs/admin</property>
+        <property name="logDir">logs</property>
 
         <!--控制台输出格式-->
-        <property name="consolePatternLayout">%d{HH:mm:ss} [%c]-[%p] %m%n</property>
+        <property name="consolePatternLayout">%d{HH:mm:ss} [%c]-[%p] [%t] %m%n</property>
 
         <!--RollingFile 输出格式-->
-        <property name="filePatternLayout">%d{yyyy/MM/dd HH:mm:ss} [%c]-[%p] %m%n</property>
+        <property name="filePatternLayout">%d{yyyy/MM/dd HH:mm:ss} [%c]-[%p] [%t] %m%n</property>
         <!--RollingFile 单文件分隔大小-->
-        <property name="fileSize">30MB</property>
+        <property name="fileSize">10MB</property>
         <!--RollingFile 存放数量，默认7个-->
         <property name="fileMax">30</property>
 
         <!--RollingFile 文件名称-->
-        <property name="allFileName">${logDir}/admin.log</property>
-        <!--RollingFile DEBUG 文件名称-->
-        <property name="debugFileName">${logDir}/admin-debug.log</property>
-        <!--RollingFile INFO 文件名称-->
-        <property name="infoFileName">${logDir}/admin-info.log</property>
-        <!--RollingFile WARN 文件名称-->
-        <property name="warnFileName">${logDir}/admin-warn.log</property>
-        <!--RollingFile ERROR 文件名称-->
-        <property name="errorFileName">${logDir}/admin-error.log</property>
+        <property name="rollingFileName">${logDir}/app.log</property>
+        <!--RollingFile framework 文件名称-->
+        <property name="frameworkFileName">${logDir}/app-framework.log</property>
 
         <!--RollingFile 按月归档-->
-        <property name="allFilePattern">
-            ${logDir}/%d{yyyy-MM}/admin-%d{yyyy-MM-dd}-%i.log.gz
+        <property name="rollingFilePattern">
+            ${logDir}/%d{yyyy-MM}/app-%d{yyyy-MM-dd}-%i.log.gz
         </property>
-        <!--RollingFile DEBUG 按月归档-->
-        <property name="debugFilePattern">
-            ${logDir}/%d{yyyy-MM}/admin-%d{yyyy-MM-dd}-%i-debug.log.gz
-        </property>
-        <!--RollingFile INFO 按月归档-->
-        <property name="infoFilePattern">
-            ${logDir}/%d{yyyy-MM}/admin-%d{yyyy-MM-dd}-%i-info.log.gz
-        </property>
-        <!--RollingFile WARN 按月归档-->
-        <property name="errorFilePattern">
-            ${logDir}/%d{yyyy-MM}/admin-%d{yyyy-MM-dd}-%i-warn.log.gz
-        </property>
-        <!--RollingFile ERROR 按月归档-->
-        <property name="errorFilePattern">
-            ${logDir}/%d{yyyy-MM}/admin-%d{yyyy-MM-dd}-%i-error.log.gz
+        <!--RollingFile framework 按月归档-->
+        <property name="frameworkFilePattern">
+            ${logDir}/%d{yyyy-MM}/app-framework-%d{yyyy-MM-dd}-%i.log.gz
         </property>
 
     </Properties>
@@ -55,99 +37,66 @@
         <!--控制台-->
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="${consolePatternLayout}"/>
-            <!--匹配INFO及以上级别-->
+            <!--匹配DEBUG及以上级别-->
             <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
 
-
-        <!--RollingFile-->
-        <RollingFile name="allFile" fileName="${allFileName}" filePattern="${allFilePattern}">
+        <!--RollingFile admin-->
+        <RollingFile name="rollingFile" fileName="${rollingFileName}" filePattern="${rollingFilePattern}">
             <!--文件输出格式-->
             <PatternLayout pattern="${filePatternLayout}"/>
-            <!--单文件分隔大小，拆分出来的文件自动压缩并存档-->
-            <SizeBasedTriggeringPolicy size="${fileSize}"/>
+            <Policies>
+                <!--每天产生至少产生一个归档，或者文件大小超过设定值产生多个归档-->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="${fileSize}"/>
+            </Policies>
             <!--同类型日志文件同一文件夹下可以存放数量，默认为7个-->
             <DefaultRolloverStrategy max="${fileMax}"/>
             <Filters>
-                <!--匹配DEBUG及以上级别-->
+                <!-- 匹配 > DEBUG  -->
                 <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
             </Filters>
         </RollingFile>
 
-        <!--RollingFile DEBUG-->
-        <RollingFile name="debugFile" fileName="${debugFileName}" filePattern="${debugFilePattern}">
+        <!--RollingFile framework-->
+        <RollingFile name="frameworkFile" fileName="${frameworkFileName}" filePattern="${frameworkFilePattern}">
             <!--文件输出格式-->
             <PatternLayout pattern="${filePatternLayout}"/>
-            <!--单文件分隔大小，拆分出来的文件自动压缩并存档-->
-            <SizeBasedTriggeringPolicy size="${fileSize}"/>
+            <Policies>
+                <!--每天产生至少产生一个归档，或者文件大小超过设定值产生多个归档-->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="${fileSize}"/>
+            </Policies>
             <!--同类型日志文件同一文件夹下可以存放数量，默认为7个-->
             <DefaultRolloverStrategy max="${fileMax}"/>
             <Filters>
-                <!--匹配DEBUG-->
-                <ThresholdFilter level="INFO" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
-            </Filters>
-        </RollingFile>
-
-        <!--RollingFile INFO-->
-        <RollingFile name="infoFile" fileName="${infoFileName}" filePattern="${infoFilePattern}">
-            <PatternLayout pattern="${filePatternLayout}"/>
-            <SizeBasedTriggeringPolicy size="${fileSize}"/>
-            <DefaultRolloverStrategy max="${fileMax}"/>
-            <Filters>
-                <!--匹配INFO-->
-                <ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <!--匹配 > INFO-->
                 <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
             </Filters>
         </RollingFile>
 
-        <!--RollingFile WARN-->
-        <RollingFile name="warnFile" fileName="${warnFileName}" filePattern="${warnFilePattern}">
-            <PatternLayout pattern="${filePatternLayout}"/>
-            <SizeBasedTriggeringPolicy size="${fileSize}"/>
-            <DefaultRolloverStrategy max="${fileMax}"/>
-            <Filters>
-                <!--匹配WARN-->
-                <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
-            </Filters>
-        </RollingFile>
-
-        <!--RollingFile ERROR-->
-        <RollingFile name="errorFile" fileName="${errorFileName}" filePattern="${errorFilePattern}">
-            <PatternLayout pattern="${filePatternLayout}"/>
-            <SizeBasedTriggeringPolicy size="${fileSize}"/>
-            <DefaultRolloverStrategy max="${fileMax}"/>
-            <Filters>
-                <!--匹配ERROR-->
-                <ThresholdFilter level="FATAL" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
-            </Filters>
-        </RollingFile>
     </Appenders>
 
     <!--定义logger,只有定义了logger并引入的appender,appender才会生效 -->
     <Loggers>
-        <!--Spring-->
+
+        <!-- 将项目产生的日志文件全部写入到单独的文件中 -->
+        <Logger name="com.antstar" level="DEBUG">
+            <AppenderRef ref="rollingFile"/>
+        </Logger>
+
+        <!-- 开发环境屏蔽框架 DEBUG 日志 -->
         <Logger name="org.springframework" level="INFO"/>
-        <!--Mybatis-->
-        <Logger name="org.apache.ibatis" level="INFO"/>
-        <Logger name="org.apache.http" level="INFO"/>
-        <Logger name="org.mybatis" level="INFO"/>
-        <!--Hibernate-->
         <Logger name="org.hibernate" level="INFO"/>
-        <Logger name="org.apache.shiro" level="INFO"/>
-        <Logger name="io.netty" level="INFO"/>
+        <Logger name="org.apache" level="INFO"/>
+        <Logger name="org.mybatis" level="INFO"/>
         <Logger name="io.lettuce" level="INFO"/>
+        <Logger name="io.netty" level="INFO"/>
 
         <!--默认日志级别-->
-        <Root level="all">
+        <Root level="debug">
             <AppenderRef ref="console"/>
-            <AppenderRef ref="allFile"/>
-            <AppenderRef ref="debugFile"/>
-            <AppenderRef ref="infoFile"/>
-            <AppenderRef ref="warnFile"/>
-            <AppenderRef ref="errorFile"/>
+            <AppenderRef ref="frameworkFile"/>
         </Root>
 
     </Loggers>

@@ -9,8 +9,8 @@ services:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./elasticsearch/data:/usr/share/elasticsearch/data     # 数据目录
-      - ./elasticsearch/conf:/usr/share/elasticsearch/config   # 配置目录
+      - /data/data/elk:/usr/share/elasticsearch/data     # 数据目录
+      - /data/elasticsearch/conf:/usr/share/elasticsearch/config   # 配置目录
     ports:
       - 9200:9200
       - 9300:9300
@@ -24,7 +24,7 @@ services:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./logstash/data:/usr/share/logstash/data    # 数据目录
+      - /data/data/elk:/usr/share/logstash/data    # 数据目录
       - ./logstash/conf:/usr/share/logstash/config   # 配置目录
     ports:
       - 5000:5000
@@ -38,7 +38,7 @@ services:
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./kibana/data:/usr/share/kibana/data    # 数据目录
+      - /data/data/elk:/usr/share/kibana/data    # 数据目录
       - ./kibana/conf:/usr/share/kibana/config    # 配置目录
     ports:
       - 5601:5601
@@ -52,7 +52,7 @@ services:
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./filebeat/data:/usr/share/filebeat/data    # 数据目录
+      - /data/data/elk:/usr/share/filebeat/data    # 数据目录
       - ./filebeat/conf/filebeat.yml:/usr/share/filebeat/filebeat.yml    # 配置文件
     links:
       - logstash
