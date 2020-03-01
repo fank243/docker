@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  filebeat:
+    hostname: filebeat
+    container_name: filebeat
+    image: filebeat:7.5.1
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /data/data/elk/filebeat:/usr/share/filebeat/data        # 数据目录
+      - ./conf/filebeat.yml:/usr/share/filebeat/filebeat.yml    # 配置文件
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    name: docker-network
+    driver: bridge
+

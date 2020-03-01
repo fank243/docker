@@ -9,7 +9,7 @@ services:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./data:/usr/share/elasticsearch/data     # 数据目录
+      - /data/data/elk/elasticsearch:/usr/share/elasticsearch/data     # 数据目录
       - ./conf:/usr/share/elasticsearch/config   # 配置目录
     ports:
       - 9200:9200

@@ -10,9 +10,9 @@ services:
       - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - /data/data/mysql:/var/lib/mysql
-      - ./conf:/etc/mysql
-    ports:
+      - /data/data/mysql:/var/lib/mysql/data # 数据目录
+      - ./conf:/etc/mysql                    # 配置文件目录
+    ports:  
       - "3306:3306"
     networks:
       - docker-network

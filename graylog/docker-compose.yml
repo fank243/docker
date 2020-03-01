@@ -18,7 +18,7 @@ services:
   # Graylog: https://hub.docker.com/r/graylog/graylog/      
   graylog:
     hostname: graylog
-    image: graylog/graylog:3.2
+    image: graylog/graylog:latest
     container_name: graylog
     restart: unless-stopped
     volumes:

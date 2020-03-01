@@ -6,7 +6,7 @@ services:
     container_name: yapi
     restart: unless-stopped
     volumes:
-        - ./yapi/conf/config.json:/yapi/config.json
+        - ./config.json:/yapi/config.json
     ports:
         - "3000:3000"
     depends_on:
