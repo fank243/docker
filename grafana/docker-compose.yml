@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  grafana:
+    image: grafana/grafana:latests
+    container_name: grafana
+    hostname: grafana
+    restart: always
+    ports:
+        - "3000:3000"
+    networks:
+        - docker-network
+
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge

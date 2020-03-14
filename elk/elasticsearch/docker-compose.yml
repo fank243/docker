@@ -3,14 +3,14 @@ services:
   elasticsearch:
     hostname: elasticsearch
     container_name: elasticsearch
-    image: elasticsearch:7.5.1
-    restart: unless-stopped
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.1
+    restart: always
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /data/data/elk/elasticsearch:/usr/share/elasticsearch/data     # 数据目录
-      - ./conf:/usr/share/elasticsearch/config   # 配置目录
+      - /data/data/elk/elasticsearch:/usr/share/elasticsearch/data                   # 数据目录
+      - ./conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml   # 配置文件
     ports:
       - 9200:9200
       - 9300:9300
