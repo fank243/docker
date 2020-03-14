@@ -26,6 +26,8 @@ chmod 777 elasticsearch/conf
 vm.max_map_count=262144
 ```
 
+2.2 或者在docker-compose.yml中增加environment `TAKE_FILE_OWNERSHIP=true` 配置，跳过data、conf目录权限认证
+
 3.配置文件问题
 
 ```bash
@@ -38,5 +40,7 @@ vm.max_map_count=262144
 discovery.seed_hosts = ["127.0.0.1", "[::1]"]
 cluster.initial_master_nodes = ["node-1"]
 ```
+
+3.2 或者在docker-compose.yml中增加environment `discovery.type=single-node` 配置，以单例模式运行
 
 ## Logstash
