@@ -14,11 +14,11 @@ services:
     volumes:
       - /data/data/elk/filebeat:/usr/share/filebeat/data          # 数据目录
       - /data/logs/elk/filebeat:/usr/share/filebeat/logs          # 日志目录
-      - ./conf/filebeat.yml:/usr/share/filebeat/filebeat.yml      # 配置文件
-      - ./conf/modules.d:/usr/share/filebeat/modules.d            # modules.目录
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml           # 配置文件
       - /var/run/docker.sock:/var/run/docker.sock:ro              # docker.sock文件所在路径
       - /var/lib/docker/containers:/var/lib/docker/containers:ro  # docker 容器目录
       - /data/logs/nginx:/data/logs/nginx:ro                      # 映射需要解析的日志文件目录
+      - /home/jason/develop/workspace/idea/antstar/antstar/logs:/data/logs/antstar:ro
     networks:
       - docker-network
 

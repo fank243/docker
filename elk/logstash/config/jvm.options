@@ -79,3 +79,18 @@
 
 # Copy the logging context from parent threads to children
 -Dlog4j2.isThreadContextMapInheritable=true
+
+#Account for illegal reflective access warnings
+--add-opens=java.base/java.io=ALL-UNNAMED
+--add-opens=java.base/java.lang=ALL-UNNAMED
+--add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+--add-opens=java.base/java.net=ALL-UNNAMED
+--add-opens=java.base/java.security=ALL-UNNAMED
+--add-opens=java.base/java.security.cert=ALL-UNNAMED
+--add-opens=java.base/java.util=ALL-UNNAMED
+--add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+--add-opens=java.base/java.util.regex=ALL-UNNAMED
+--add-opens=java.base/java.util.zip=ALL-UNNAMED
+--add-opens=java.base/javax.crypto=ALL-UNNAMED
+--add-opens=java.management/sun.management=ALL-UNNAMED
+

@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   grafana:
-    image: grafana/grafana:latests
+    image: grafana/grafana:latest
     container_name: grafana
     hostname: grafana
     restart: always

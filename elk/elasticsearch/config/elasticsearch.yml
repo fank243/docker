@@ -20,7 +20,7 @@ cluster.name: elasticsearch
 #
 # Use a descriptive name for the node:
 # 节点名称
-node.name: elastic-vbox
+node.name: elastic-deepin
 #
 # Add custom attributes to the node:
 #

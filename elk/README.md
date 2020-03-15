@@ -2,7 +2,7 @@
 
 ## 安装顺序
 
-安装顺序依此为：elasticserch > filebeat > logstash> kibana
+安装顺序依此为：elasticserch > logstash > filebeat > kibana
 
 ## Elasticserch
 
@@ -44,3 +44,13 @@ cluster.initial_master_nodes = ["node-1"]
 3.2 或者在docker-compose.yml中增加environment `discovery.type=single-node` 配置，以单例模式运行
 
 ## Logstash
+
+## Kibana
+
+```bash
+
+```
+
+```bash
+chown
+```
