@@ -2,7 +2,7 @@ version: '3.7'
 services:
   nginx:
     hostname: nginx
-    image: nginx:1.16.1
+    image: nginx:latest
     container_name: nginx
     restart: unless-stopped
     environment:

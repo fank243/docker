@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   redis:
     hostname: redis
@@ -9,7 +9,7 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - /data/data/redis:/data/redis/data # redis.conf中的dir路径也需保持一致
+      - /data/data/redis:/data/redis/data   # redis.conf中的dir路径也需保持一致
       - ./conf:/etc/redis
       - /data/logs/redis:/data/redis/logs
     ports:

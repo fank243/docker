@@ -86,3 +86,7 @@ http.port: 9200
 # Require explicit names when deleting indices:
 #
 #action.destructive_requires_name: true
+
+# 允许跨域请求
+http.cors.enabled: true
+http.cors.allow-origin: "*"

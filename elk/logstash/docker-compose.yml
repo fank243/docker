@@ -6,9 +6,9 @@ services:
     image: logstash:7.6.1
     restart: always
     environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      - LS_JAVA_OPTS=-Xmx256m -Xms256m
+      - TZ=Asia/Shanghai
     volumes:
-      - /etc/localtime:/etc/localtime:ro
       - /data/data/elk/logstash:/usr/share/logstash/data    # 数据目录
       - ./conf:/usr/share/logstash/config   # 配置目录
     ports:

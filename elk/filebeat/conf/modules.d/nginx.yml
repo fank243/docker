@@ -8,7 +8,7 @@
 
     # Set custom paths for the log files. If left empty,
     # Filebeat will choose the paths depending on your OS.
-    var.paths: ["/usr/local/nginx/logs/access.log*"]
+    var.paths: ["/data/logs/nginx/access*.log"]
 
   # Error logs
   error:
@@ -16,4 +16,4 @@
 
     # Set custom paths for the log files. If left empty,
     # Filebeat will choose the paths depending on your OS.
-    var.paths: ["/usr/local/nginx/logs/error.log*"]
+    var.paths: ["/data/logs/nginx/error*.log"]

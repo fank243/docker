@@ -3,7 +3,7 @@ services:
   kibana:
     hostname: kibana
     container_name: kibana
-    image: kibana:7.6.1
+    image: docker.elastic.co/kibana/kibana:7.6.1
     restart: always
     volumes:
       - /etc/localtime:/etc/localtime:ro
