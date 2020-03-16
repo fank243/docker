@@ -3,20 +3,22 @@ services:
   # Graylog: https://hub.docker.com/r/graylog/graylog/      
   graylog:
     hostname: graylog
-    image: graylog/graylog:latest
+    image: graylog/graylog:3.2
     container_name: graylog
     restart: unless-stopped
     volumes:
       # Mount local configuration directory into Docker container
       - ./config:/usr/share/graylog/data/config
       - /data/data/graylog:/usr/share/graylog/data/journal
+      - ./geoLite/GeoLite2-City.mmdb:/etc/graylog/server/GeoLite2-City.mmdb # IP地址库
     networks:
       - docker-network
     ports:
       # Graylog web interface and REST API
       - 9000:9000
-      - 1514-12204:1514-12204
-      - 1514-12204:1514-12204/udp
+      - 5044:5044/udp
+      - 12200-12204:12200-12204
+      - 12200-12204:12200-12204/udp
 
 networks:
   docker-network:
