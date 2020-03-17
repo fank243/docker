@@ -2,7 +2,7 @@ version: '3.7'
 services:
   nginx:
     hostname: nginx
-    image: nginx:latest
+    image: nginx:1.16.1
     container_name: nginx
     restart: unless-stopped
     environment:
@@ -15,6 +15,11 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://172.18.0.6:12401"
+        tag: nginx 
     networks:
       - docker-network
 

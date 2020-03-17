@@ -1,7 +1,8 @@
 db.createUser({
-    user: "root",
-    pwd: "root",
+    user: "graylog",
+    pwd: "graylog",
     roles: [{
-        role: "readWrite"
+        role: "readWrite",
+        db:"graylog"
     }]
 });
