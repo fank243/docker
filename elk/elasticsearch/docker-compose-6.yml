@@ -1,17 +1,10 @@
 version: '3.7'
 services:
-<<<<<<< HEAD
-  elasticsearch:
-    hostname: elasticsearch
-    container_name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.6
-=======
   # https://hub.docker.com/r/elastic/elasticsearch
   elasticsearch:
     hostname: elasticsearch
     container_name: elasticsearch
     image: elastic/elasticsearch:6.8.7
->>>>>>> e5ac84c2bb38cd3a8c7af9f11a74b591f48a0b00
     restart: always
     environment:
       - ES_JAVA_OPTS=-Xmx256m -Xms256m  # jvm参数

@@ -20,11 +20,7 @@ cluster.name: elasticsearch
 #
 # Use a descriptive name for the node:
 #
-<<<<<<< HEAD:graylog/elasticsearch/config/elasticsearch.yml
-node.name: elastic-deepin
-=======
 node.name: elastic-master
->>>>>>> e5ac84c2bb38cd3a8c7af9f11a74b591f48a0b00:graylog/elasticsearch/config/elasticsearch.yml
 #
 # Add custom attributes to the node:
 #
