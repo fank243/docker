@@ -10,7 +10,7 @@ services:
       # Mount local configuration directory into Docker container
       - ./config:/usr/share/graylog/data/config
       - /data/data/graylog:/usr/share/graylog/data/journal
-      - ./geoLite/GeoLite2-City.mmdb:/etc/graylog/server/GeoLite2-City.mmdb # IP地址库
+      - ./geoLite/GeoLite2-City.mmdb:/usr/local/etc/graylog/GeoLite2-City.mmdb # IP地址库
     networks:
       - docker-network
     ports:
