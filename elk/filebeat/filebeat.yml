@@ -13,7 +13,7 @@ filebeat.inputs:
 - type: log
   enabled: true
   paths:
-    - /data/logs/antstar/*.log
+    - /home/logs/antstar/*.log
   fields:
     message: "antstar"
 
