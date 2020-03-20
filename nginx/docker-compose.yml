@@ -11,14 +11,15 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./conf:/etc/nginx/conf.d
       - ./html:/usr/share/nginx/html
-    #  - /data/logs/nginx:/var/log/nginx
+      - ./test/index.html:/home/wwwroot/test/index.html
+    #  - /home/logs/nginx:/var/log/nginx
     ports:
       - "80:80"
       - "443:443"
     logging:
       driver: gelf
       options:
-        gelf-address: "udp://172.18.0.6:12201"
+        gelf-address: "udp://172.19.0.3:12201"
         tag: nginx 
     networks:
       - docker-network
