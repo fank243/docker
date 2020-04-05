@@ -2,17 +2,16 @@ version: '3.7'
 services:
   yapi:
     hostname: yapi
-    image: jayfong/yapi:latest
+    image: jayfong/yapi:1.8.9
     container_name: yapi
     restart: unless-stopped
     volumes:
-        - ./config.json:/yapi/config.json
+      - ./conf/config.json:/yapi/config.json
+      - /data/data/yapi:/data/db
     ports:
-        - "3000:3000"
-    depends_on:
-        - mongo
+      - "8300:3000"
     networks:
-        - docker-network
+      - docker-network
 
 networks:
   docker-network:
