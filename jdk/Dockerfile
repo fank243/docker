@@ -1,7 +1,13 @@
 FROM alpine:latest
 
-ARG JAVA_GZ=jdk1.8.0_202.tar.gz
-ARG JAVA_VERSION=jdk1.8.0_202
+# Oracle jdk
+#ARG JAVA_GZ=jdk1.8.0_202.tar.gz
+#ARG JAVA_VERSION=jdk1.8.0_202
+
+# Alibaba Dragonwell
+ARG JAVA_GZ=j2sdk-image.tar.gz
+ARG JAVA_VERSION=j2sdk-image
+
 ARG JAVA_LOCAL=/usr/local/java
 ARG JAVA_HOME=/usr/local/java/${JAVA_VERSION}
 
