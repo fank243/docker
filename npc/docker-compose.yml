@@ -7,11 +7,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./conf:/conf
-    logging:
-      driver: gelf
-      options:
-          gelf-address: "udp://graylog:12401"
-          tag: nginx  
     networks:
       - docker-network
   
