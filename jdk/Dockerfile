@@ -12,6 +12,9 @@ RUN mkdir -p ${JAVA_BASE}
 # 添加JDK到容器中并解压缩
 ADD ${JAVA_GZ} ${JAVA_BASE}
 
+# 复制arthas-boot.jar
+COPY arthas-boot.jar /arthas/arthas-boot.jar
+
 COPY glibc-2.30-r0.apk /glibc-2.30-r0.apk
 COPY glibc-bin-2.30-r0.apk /glibc-bin-2.30-r0.apk
 COPY glibc-i18n-2.30-r0.apk /glibc-i18n-2.30-r0.apk

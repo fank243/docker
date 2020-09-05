@@ -10,5 +10,3 @@ app/lib/*.jar
 !.gitignore
 
 jdk/*.tar.gz
-jdk/*.apk
-
