@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ARG JAVA_GZ=/home/jason/Downloads/jdk1.8.0_262.tar.gz
+ARG JAVA_GZ=jdk1.8.0_262.tar.gz
 ARG JAVA_LOCAL=/usr/local
 ARG JAVA_BASE=${JAVA_LOCAL}/java
 ARG JAVA_HOME=${JAVA_BASE}/jdk1.8.0_262
@@ -10,9 +10,9 @@ RUN mkdir -p ${JAVA_BASE}
 # 添加JDK到容器中并解压缩
 ADD ${JAVA_GZ} ${JAVA_BASE}
 
-COPY ../glibc-2.30-r0.apk /glibc-2.30-r0.apk
-COPY ../glibc-bin-2.30-r0.apk /glibc-bin-2.30-r0.apk
-COPY ../glibc-i18n-2.30-r0.apk /glibc-i18n-2.30-r0.apk
+COPY glibc-2.30-r0.apk /glibc-2.30-r0.apk
+COPY glibc-bin-2.30-r0.apk /glibc-bin-2.30-r0.apk
+COPY glibc-i18n-2.30-r0.apk /glibc-i18n-2.30-r0.apk
 
 # 更换国内源
 RUN echo http://mirrors.aliyun.com/alpine/v3.7/main > /etc/apk/repositories \
