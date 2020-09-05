@@ -1,19 +1,27 @@
 FROM alpine:latest
 
-ARG JAVA_GZ=jdk1.8.0_202.tar.gz
-ARG JAVA_VERSION=1.8.0_202
-ARG JAVA_LOCAL=/usr/local
-ARG JAVA_BASE=${JAVA_LOCAL}/java
-ARG JAVA_HOME=${JAVA_BASE}/jdk${JAVA_VERSION}
+# Oracle jdk
+#ARG JAVA_GZ=jdk1.8.0_202.tar.gz
+#ARG JAVA_VERSION=jdk1.8.0_202
 
-RUN mkdir -p ${JAVA_BASE}
+# Alibaba Dragonwell
+ARG JAVA_GZ=j2sdk-image.tar.gz
+ARG JAVA_VERSION=j2sdk-image
+
+ARG JAVA_LOCAL=/usr/local/java
+ARG JAVA_HOME=/usr/local/java/${JAVA_VERSION}
+
+RUN mkdir -p ${JAVA_LOCAL}
 
 # 添加JDK到容器中并解压缩
-ADD ${JAVA_GZ} ${JAVA_BASE}
+ADD ${JAVA_GZ} ${JAVA_LOCAL}
 
 COPY glibc-2.30-r0.apk /glibc-2.30-r0.apk
 COPY glibc-bin-2.30-r0.apk /glibc-bin-2.30-r0.apk
 COPY glibc-i18n-2.30-r0.apk /glibc-i18n-2.30-r0.apk
+
+# 复制arthas-boot.jar
+COPY arthas-boot.jar /usr/local/java/arthas-boot.jar
 
 # 更换国内源
 RUN echo http://mirrors.aliyun.com/alpine/v3.7/main > /etc/apk/repositories \
@@ -31,7 +39,7 @@ RUN apk add --no-cache tzdata \
 && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # 创建应用目录
-RUN mkdir -p /app/config && mkdir -p /app/logs && mkdir -p /app/lib
+RUN mkdir -p /app/logs
 
 RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
     && apk add glibc-2.30-r0.apk glibc-bin-2.30-r0.apk glibc-i18n-2.30-r0.apk \

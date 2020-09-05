@@ -46,11 +46,3 @@ cluster.initial_master_nodes = ["node-1"]
 ## Logstash
 
 ## Kibana
-
-```bash
-
-```
-
-```bash
-chown
-```
