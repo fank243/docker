@@ -2,7 +2,7 @@ version: '3.7'
 services:
   mysql:
     hostname: mysql
-    image: mysql:5.7.28
+    image: mysql:5.7
     container_name: mysql
     restart: unless-stopped
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci #设置utf8字符集

@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  demo:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: fank243/demo:1.0.0
+    hostname: demo
+    container_name: demo
+#    network_mode: "host"
+    restart: on-failure
+    environment:
+      - SPRING_ACTIVE=test
+    volumes:
+      - ./lib/demo-1.0.0.jar:/app/app.jar
+      - ./config:/app/config
+      - /data/lib/admin:/app/lib
+      - /data/logs/admin:/app/logs
+    ports:
+      - "8900:8900"
+    networks:
+      docker-network
+      
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge
