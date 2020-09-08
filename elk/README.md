@@ -47,10 +47,11 @@ cluster.initial_master_nodes = ["node-1"]
 
 ## Kibana
 
-```bash
 
-```
 
-```bash
-chown
-```
+
+
+
+
+
+

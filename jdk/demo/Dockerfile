@@ -1,5 +1,8 @@
-FROM fank243/jdk:1.8.0_202
+FROM fank243/dragonwell:1.8.0_262
+
+# 构建参数，默认值：test
+ARG prifiles=test
 
 WORKDIR /app
 
-CMD java -Dloader.path=lib -jar app.jar
+CMD java -Djava.security.egd=file:/dev/./urandom -Dloader.path=lib -Dspring.profiles.active=${profiles} -jar app.jar

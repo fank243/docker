@@ -9,3 +9,4 @@ app/lib/*.jar
 # 将空目录纳入进去
 !.gitignore
 
+jdk/*.tar.gz

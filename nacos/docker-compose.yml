@@ -1,52 +1,22 @@
 version: "3.7"
 services:
-  nacos1:
+  nacos:
     image: nacos/nacos-server:latest
-    container_name: nacos1
-    hostname: nacos1
+    hostname: nacos
+    container_name: nacos
+    #network_mode: bridge
     env_file:
       - ./env/nacos-standlone-mysql.env
     volumes:
-      - /data/logs/nacos1:/home/nacos/logs
-      - ./conf/custom.properties:/home/nacos/init.d/custom.properties
+      - /home/logs/nacos/:/home/nacos/logs
+      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
     ports:
       - "8848:8848"
     restart: on-failure
     networks:
       - docker-network
-  
-  nacos2:
-    image: nacos/nacos-server:latest
-    container_name: nacos2
-    hostname: nacos2
-    env_file:
-      - ./env/nacos-standlone-mysql.env
-    volumes:
-      - /data/logs/nacos2:/home/nacos/logs
-      - ./conf/custom.properties:/home/nacos/init.d/custom.properties
-    ports:
-      - "8849:8848"
-    restart: on-failure
-    networks:
-      - docker-network
 
-  nacos3:
-    image: nacos/nacos-server:latest
-    container_name: nacos3
-    hostname: nacos3
-    env_file:
-      - ./env/nacos-standlone-mysql.env
-    volumes:
-      - /data/logs/nacos3:/home/nacos/logs
-      - ./conf/custom.properties:/home/nacos/init.d/custom.properties
-    ports:
-      - "8850:8848"
-    restart: on-failure
-    networks:
-      - docker-network       
-            
 networks:
   docker-network:
-    name: docker-network
+    name: docker-network # 网络名称
     driver: bridge
-          
