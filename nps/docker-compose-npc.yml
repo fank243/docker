@@ -1,12 +1,12 @@
 version: '3.7'
 services:
   npc:
+    image: ffdfgdfg/npc:latest
     hostname: npc
-    image: ffdfgdfg/npc:0.25.3
     container_name: npc
     restart: unless-stopped
     volumes:
-      - ./conf:/conf
+      - ./npc-conf:/conf
     networks:
       - docker-network
   
