@@ -1,3 +1,5 @@
+# 清理jdk脚本
+
 rm -rf ASSEMBLY_EXCEPTION
 rm -rf LICENSE
 rm -rf THIRD_PARTY_README
