@@ -3,7 +3,7 @@ services:
   # Graylog: https://hub.docker.com/r/graylog/graylog/      
   graylog:
     hostname: graylog
-    image: graylog/graylog:3.2.4
+    image: graylog/graylog:3.3.8
     container_name: graylog
     restart: always
     volumes:
