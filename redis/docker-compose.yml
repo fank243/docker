@@ -9,7 +9,7 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - ./conf:/etc/redis
+      - ./conf/redis.conf:/etc/redis/redis.conf
       - /data/data/redis:/data/redis/data   # redis.conf中的dir路径也需保持一致
       - /data/logs/redis:/data/redis/logs
     ports:
