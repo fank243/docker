@@ -1,8 +1,0 @@
-# 集群名称
-cluster.name: elasticsearch
-# 节点名称
-node.name: elastic-master
-# 允许访问ip地址
-network.host: 0.0.0.0
-# 自定义端口
-http.port: 9200
