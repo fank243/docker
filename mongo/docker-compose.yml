@@ -2,14 +2,14 @@ version: '3.7'
 services:
   mongo:
     hostname: mongo
-    image: mongo:latest
+    image: mongo:4.2.10
     container_name: mongo
     restart: unless-stopped
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
     volumes:
-      - /home/data/mongo:/data/db
+      - /data/data/mongo:/data/db
     ports:
       - "27017:27017"
     networks:
