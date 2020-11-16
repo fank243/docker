@@ -8,8 +8,8 @@ services:
     restart: always
     volumes:
       # Mount local configuration directory into Docker container
-      - ./config:/usr/share/graylog/data/config
-      - /home/data/graylog:/usr/share/graylog/data/journal
+      - ./conf/graylog.conf:/usr/share/graylog/data/config/graylog.conf
+      - /data/data/graylog:/usr/share/graylog/data/journal
       - ./geoLite/GeoLite2-City.mmdb:/etc/graylog/server/GeoLite2-City.mmdb # IP地址库
     networks:
       - docker-network
