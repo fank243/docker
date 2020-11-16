@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   nacos:
-    image: nacos/nacos-server:latest
+    image: nacos/nacos-server:1.4.0
     hostname: nacos
     container_name: nacos
     #network_mode: bridge
@@ -9,7 +9,7 @@ services:
       - ./env/nacos-standlone-mysql.env
     volumes:
       - /home/logs/nacos/:/home/nacos/logs
-      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
+    #  - ./init.d/custom.properties:/home/nacos/init.d/custom.properties # 适用1.4.0以下版本
     ports:
       - "8848:8848"
     restart: on-failure
