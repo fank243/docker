@@ -8,10 +8,7 @@ services:
     hostname: demo
     container_name: demo
     volumes:
-      - ./demo-1.0.0.jar:/app/app.jar
-      - ./config:/app/config
-      - ./lib:/app/lib
-      - ./logs:/app/logs
+      - ./antstar-admin.jar:/app/app.jar
     ports:
       - "8900:8900"
     networks:

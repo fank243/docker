@@ -1,11 +1,11 @@
 FROM alpine:latest
 
 # jdk文件名称
-ARG JAVA_GZ=jdk1.8.0_262.tar.gz 
+ARG JAVA_GZ=jdk1.8.0_272.tar.gz 
 ARG JAVA_LOCAL=/usr/local
 ARG JAVA_BASE=${JAVA_LOCAL}/java
 # 解压缩后的文件名称
-ARG JAVA_HOME=${JAVA_BASE}/jdk1.8.0_262
+ARG JAVA_HOME=${JAVA_BASE}/jdk1.8.0_272
 
 RUN mkdir -p ${JAVA_BASE}
 

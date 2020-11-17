@@ -10,3 +10,4 @@ app/lib/*.jar
 !.gitignore
 
 jdk/*.tar.gz
+jdk/demo/*.jar
