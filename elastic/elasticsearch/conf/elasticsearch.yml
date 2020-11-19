@@ -6,8 +6,11 @@ node.name: master
 
 # 绑定IP
 network.host: 0.0.0.0
+# 主机IP地址
+network.publish_host: 192.168.1.100
 # 绑定端口
 http.port: 9200
+transport.port: 9300
 
 # 数据目录
 path.data: /usr/share/elasticsearch/data
