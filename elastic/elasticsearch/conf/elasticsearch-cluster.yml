@@ -7,7 +7,7 @@ node.name: master
 # 绑定IP
 network.host: 0.0.0.0
 # 主机IP地址
-network.publish_host: 192.168.8.119
+network.publish_host: 192.168.1.110
 # 绑定端口
 http.port: 9200
 
