@@ -5,12 +5,12 @@ services:
     image: mysql:5.7
     container_name: mysql
     restart: unless-stopped
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci #设置utf8字符集
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password #设置utf8字符集
     environment:
       - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - /home/data/mysql:/var/lib/mysql/data # 数据目录
+      - E:/data/mysql:/var/lib/mysql/data    # 数据目录
       - ./conf:/etc/mysql                    # 配置文件目录
     ports:  
       - "3306:3306"
