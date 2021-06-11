@@ -10,7 +10,7 @@ services:
       - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - /home/jason/devops/data/mysql:/var/lib/mysql   # 数据目录
+      - /home/data/mysql:/var/lib/mysql   # 数据目录
  #     - ./conf:/etc/mysql                    # 配置文件目录
     ports:  
       - "3306:3306"
