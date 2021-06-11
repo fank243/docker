@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  sentinel:
+    image: fank243/sentinel-dashboard:1.8.1
+    hostname: sentinel
+    container_name: sentinel
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    #  - sentinel_dashboard_auth_username=admin
+    #  - sentinel_dashboard_auth_password=admin
+    ports:
+      - "8858:8858"
+      - "8719:8719"
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge
+      

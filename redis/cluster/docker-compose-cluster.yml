@@ -1,0 +1,108 @@
+version: '3.7'
+services:
+  redis6370:
+    hostname: redis6370
+    image: redis:latest
+    container_name: redis6370
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /home/data/redis/6370/data:/data # redis.conf中的dir路径也需保持一致
+      - /home/data/redis/6370/conf:/usr/local/etc/redis
+    ports:
+      - "6370:6370"
+      - "16370:16370"
+    networks:
+      - redis-network
+
+  redis6371:
+    hostname: redis6371
+    image: redis:latest
+    container_name: redis6371
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /home/data/redis/6371/data:/data # redis.conf中的dir路径也需保持一致
+      - /home/data/redis/6371/conf:/usr/local/etc/redis
+    ports:
+      - "6371:6371"
+      - "16371:16371"
+    networks:
+      - redis-network
+
+  redis6372:
+    hostname: redis6372
+    image: redis:latest
+    container_name: redis6372
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /home/data/redis/6372/data:/data # redis.conf中的dir路径也需保持一致
+      - /home/data/redis/6372/conf:/usr/local/etc/redis
+    ports:
+      - "6372:6372"
+      - "16372:16372"
+    networks:
+     - redis-network
+  
+  redis6373:
+    hostname: redis6373
+    image: redis:latest
+    container_name: redis6373
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /home/data/redis/6373/data:/data # redis.conf中的dir路径也需保持一致
+      - /home/data/redis/6373/conf:/usr/local/etc/redis
+    ports:
+      - "6373:6373"
+      - "16373:16373"
+    networks:
+      - redis-network
+
+  redis6374:
+    hostname: redis6374
+    image: redis:latest
+    container_name: redis6374
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /home/data/redis/6374/data:/data # redis.conf中的dir路径也需保持一致
+      - /home/data/redis/6374/conf:/usr/local/etc/redis
+    ports:
+      - "6374:6374"
+      - "16374:16374"
+    networks:
+      - redis-network
+   
+  redis6375:
+    hostname: redis6375
+    image: redis:latest
+    container_name: redis6375
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /home/data/redis/6375/data:/data # redis.conf中的dir路径也需保持一致
+      - /home/data/redis/6375/conf:/usr/local/etc/redis
+    ports:
+      - "6375:6375"
+      - "16375:16375"
+    networks:
+      - redis-network
+  
+networks:
+  redis-network:
+    name: redis-network
+    driver: bridge

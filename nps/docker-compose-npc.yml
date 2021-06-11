@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  npc:
+    image: ffdfgdfg/npc:latest
+    hostname: npc
+    container_name: npc
+    restart: unless-stopped
+    volumes:
+      - ./npc-conf:/conf
+    networks:
+      - docker-network
+  
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge
+  

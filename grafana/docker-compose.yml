@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    hostname: grafana
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./conf/defaults.ini:/usr/share/grafana/conf/defaults.ini # 配置文件
+      - /data/data/grafana:/var/lib/grafana:rw  # 数据目录、插件目录
+    ports:
+        - "3000:3000"
+    networks:
+        - docker-network
+
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge

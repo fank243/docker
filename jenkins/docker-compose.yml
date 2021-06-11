@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  jenkins:
+    image: jenkins/jenkins:latest  # 不要使用docker官方jenkins镜像，该镜像已经不维护了
+    hostname: jenkins
+    container_name: jenkins
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai        # 更换为国内时区
+    volumes:
+      # 必须授权 chown 1000.1000 -R /home/data/jenkins_home
+      - /data/data/jenkins_home:/var/jenkins_home 
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    networks:
+      - docker-network
+  
+networks:
+  docker-network:
+     name: docker-network
+     driver: bridge

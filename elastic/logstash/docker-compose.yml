@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  logstash:
+    hostname: logstash
+    container_name: logstash
+    # https://hub.docker.com/r/elastic/logstash
+    image: elastic/logstash:7.6.1
+    restart: always
+    user: root   
+    environment:
+      - LS_JAVA_OPTS=-Xmx256m -Xms256m
+      - TZ=Asia/Shanghai
+    volumes:
+      - /data/data/elk/logstash:/usr/share/logstash/data        # 数据目录
+      - /data/logs/elk/logstash:/usr/share/logstash/logs        # 数据目录
+      - ./config:/usr/share/logstash/config                     # 配置文件
+      - ./pipeline:/usr/share/logstash/pipeline                 # 配置目录
+    ports:
+      - 5044:5044
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    name: docker-network
+    driver: bridge
+

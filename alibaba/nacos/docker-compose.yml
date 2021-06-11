@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  nacos:
+    image: nacos/nacos-server:2.0.1 # 2.0.1
+    hostname: nacos
+    container_name: nacos
+    #network_mode: bridge
+    env_file:
+      - ./env/nacos-standlone-mysql.env
+    volumes:
+      - /home/jason/logs/nacos:/home/nacos/logs
+      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
+    ports:
+      - "8848:8848"
+    #  - "9848:9848" # 1.x
+    #  - "9555:9555" # 1.x
+      - "9848-9849:9848-9849" # 2.x 新增GRPC端口
+    restart: on-failure
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge

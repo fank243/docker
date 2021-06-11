@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  yapi:
+    hostname: yapi
+    image: jayfong/yapi:1.9.2
+    container_name: yapi
+    restart: unless-stopped
+    volumes:
+      - ./conf/config.json:/yapi/config.json
+      - /home/data/yapi:/data/db
+    ports:
+      - "8300:3000"
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge

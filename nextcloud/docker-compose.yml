@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  yapi:
+    hostname: nextcloud
+    image: nextcloud:latest
+    container_name: nextcloud
+    restart: unless-stopped
+    volumes:
+      - /home/data/nextcloud:/var/www/html
+    ports:
+      - "8080:80"
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge
