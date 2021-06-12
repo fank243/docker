@@ -7,14 +7,20 @@ services:
     restart: unless-stopped
     environment:
       - TZ=Asia/Shanghai
-    #  - sentinel_dashboard_auth_username=admin
-    #  - sentinel_dashboard_auth_password=admin
+    volumes:
+      - ./application.properties:/app/application.properties
+      - /home/logs/sentinel:/root/logs/csp
     ports:
       - "8858:8858"
       - "8719:8719"
     networks:
       - docker-network
-
+    deploy:
+      resources:
+        limits:
+          cpus: '0.4'     # 限制CPU最高占用：40%
+          memory: 200M    # 限制内存最高占用：200M
+  
 networks:
   docker-network:
     name: docker-network # 网络名称

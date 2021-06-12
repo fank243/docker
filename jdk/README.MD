@@ -18,7 +18,7 @@ JAVA_HOME=解压缩后目录名称
 3. 构建镜像
 
 ```bash
-docker build -t fank243/dragonwell:1.8.0_262 .
+docker build -t fank243/dragonwell:1.8.0_282 .
 ```
 
 4. 推送镜像到hub.docker.com
@@ -26,7 +26,7 @@ docker build -t fank243/dragonwell:1.8.0_262 .
 ```bash
 docker login
 
-docker push fank243/dragonwell:1.8.0_262
+docker push fank243/dragonwell:1.8.0_282
 ```
 
 ## glic 下载地址

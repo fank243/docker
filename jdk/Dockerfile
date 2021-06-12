@@ -13,11 +13,9 @@ RUN mkdir -p ${JAVA_BASE}
 ADD ${JAVA_GZ} ${JAVA_BASE}
 
 # 复制arthas-boot.jar
-COPY arthas-boot.jar /arthas/arthas-boot.jar
+# COPY arthas-boot.jar /arthas/arthas-boot.jar
 
-COPY glibc-2.30-r0.apk /glibc-2.30-r0.apk
-COPY glibc-bin-2.30-r0.apk /glibc-bin-2.30-r0.apk
-COPY glibc-i18n-2.30-r0.apk /glibc-i18n-2.30-r0.apk
+COPY glibc/*.apk /
 
 # 更换国内源
 RUN echo http://mirrors.aliyun.com/alpine/v3.7/main > /etc/apk/repositories \

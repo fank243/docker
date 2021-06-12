@@ -9,6 +9,10 @@ app/lib/*.jar
 # 将空目录纳入进去
 !.gitignore
 
-jdk/*.tar.gz
-jdk/demo/*.jar
-alibaba/sentinel-dashboard/*.jar
+# jdk
+*.tar.gz
+*.jar
+*.apk
+
+# graylog
+*.mmdb

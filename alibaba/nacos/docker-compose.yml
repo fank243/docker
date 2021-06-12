@@ -10,6 +10,10 @@ services:
     volumes:
       - /home/logs/nacos:/home/nacos/logs
       - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
+    environment:        
+      - JVM_XMS=128m     # 设定程序启动时占用内存大小
+      - JVM_XMX=128m     # 设定程序运行期间最大可占用的内存大小
+      - JVM_XMN=16m      # 新生代大小
     ports:
       - "8848:8848"
     #  - "9848:9848" # 1.x
@@ -18,7 +22,11 @@ services:
     restart: on-failure
     networks:
       - docker-network
-
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'     # 限制CPU最高占用：50%
+          memory: 450M    # 限制内存最高占用：450M，nacos最低内存要求
 networks:
   docker-network:
     name: docker-network # 网络名称

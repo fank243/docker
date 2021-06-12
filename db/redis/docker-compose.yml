@@ -18,7 +18,11 @@ services:
       net.core.somaxconn: '1024' # 可以解决TCP backlog(net.core.somaxconn)内核参数过低(默认:128)导致启动出现警告日志的问题
     networks:
       - docker-network
-
+    deploy:
+      resources:
+        limits:
+          cpus: '0.2'     # 限制CPU最高占用：20%
+          memory: 64M    # 限制内存最高占用：64M
 networks:
   docker-network:
     name: docker-network # 网络名称
