@@ -73,3 +73,4 @@ rm -rf jre/bin/tnameserv
 rm -rf jre/bin/unpack200
 rm -rf jre/bin/javaws
 
+rm -rf legal/javafx

@@ -8,7 +8,7 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - ./application.properties:/app/application.properties
+      - ./sentinel.properties:/app/application.properties
       - /home/logs/sentinel:/root/logs/csp
     ports:
       - "8858:8858"
@@ -18,7 +18,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.4'     # 限制CPU最高占用：40%
+          cpus: '0.5'     # 限制CPU最高占用：50%
           memory: 200M    # 限制内存最高占用：200M
   
 networks:

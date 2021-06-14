@@ -1,6 +1,4 @@
-# jdk 镜像构建
-
-Alibaba Dragonwell8 下载地址：https://github.com/alibaba/dragonwell8/wiki/%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F(Mirrors-for-download)
+# JDK 镜像构建
 
 ## 构建步骤
 
@@ -8,17 +6,25 @@ Alibaba Dragonwell8 下载地址：https://github.com/alibaba/dragonwell8/wiki/%
 
 1. 拷贝jdk**.tar.gz文件到jdk目录下面
 
-2. 修改`Dockerfile`文件中的`JAVA_GZ`和`JAVA_HOME`参数项
+2. 修改`Dockerfile`文件中的`JAVA_VERSION`
 
 ```bash
-JAVA_GZ=jdk压缩文件名称
-JAVA_HOME=解压缩后目录名称
+JAVA_VERSION=JDK版本 # 即.tar.gz文件名称
 ```
 
 3. 构建镜像
 
 ```bash
-docker build -t fank243/dragonwell:1.8.0_282 .
+docker build -t jdk:1.8.0 .
+```
+
+4. 验证镜像
+
+```bash
+# 验证
+docker run --name jdk -it jdk:1.8.0 sh
+
+java -version
 ```
 
 4. 推送镜像到hub.docker.com
@@ -26,10 +32,11 @@ docker build -t fank243/dragonwell:1.8.0_282 .
 ```bash
 docker login
 
-docker push fank243/dragonwell:1.8.0_282
+# tag 
+docker tag jdk:1.8.0 fank243/oraclejdk:1.8.0_292
+
+# push
+docker push fank243/oraclejdk:1.8.0_292
+
+
 ```
-
-## glic 下载地址
-
-链接: https://pan.baidu.com/s/1Y9nZijnwJKwNOMIfhPneTA  密码: 9np6
-
