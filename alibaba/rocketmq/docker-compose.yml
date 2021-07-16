@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  rmqnamesrv:
+    image: foxiswho/rocketmq:4.8.0
+    hostname: rmqnamesrv
+    container_name: rmqnamesrv
+    restart: always
+    command: sh mqbroker -c /home/rocketmq/conf/broker.conf
+    environment:
+      - JAVA_OPT_EXT=-Xms512M -Xmx512M -Xmn128m
+    volumes:
+      # chmod 777
+      - ~/logs/rocketmq/namesrv:/home/rocketmq/logs/rocketmqlogs
+      - ./conf/broker.conf:/home/rocketmq/conf/broker.conf
+    ports:
+      - "9876:9876"
+    networks:
+      - docker-network
+
+  rmqbroker:
+    image: foxiswho/rocketmq:4.8.0
+    hostname: rmqbroker
+    container_name: rmqbroker
+    restart: always
+    command: sh mqbroker -c /home/rocketmq/conf/broker.conf
+    environment:
+      - JAVA_OPT_EXT=-Xms512M -Xmx512M -Xmn128m
+      - NAMESRV_ADDR=rmqnamesrv:9876
+    volumes:
+      # chmod 777
+      - ~/logs/rocketmq/broker:/home/rocketmq/logs/rocketmqlogs
+      - ~/data/rocketmq/store:/home/rocketmq/store
+      - ./conf/broker.conf:/home/rocketmq/conf/broker.conf
+    ports:
+      - "10911:10911"
+      - "10912:10912"
+      - "10909:10909"
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge
+      

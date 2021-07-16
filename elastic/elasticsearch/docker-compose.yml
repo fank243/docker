@@ -13,8 +13,8 @@ services:
       - TAKE_FILE_OWNERSHIP=true        # 跳过data、conf目录拥有者权限认证，否则需要给data、conf目录授权
     volumes:
       - ./conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml   # 配置文件
-      - /home/data/elk/elasticsearch:/usr/share/elasticsearch/data                   # 数据目录
-      - /home/logs/elk/elasticsearch:/usr/share/elasticsearch/logs                  # 日志目录
+      - ~/data/elk/elasticsearch:/usr/share/elasticsearch/data                   # 数据目录
+      - ~/logs/elk/elasticsearch:/usr/share/elasticsearch/logs                  # 日志目录
     ports:
       - 9200:9200
       - 9300:9300

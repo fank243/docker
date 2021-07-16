@@ -4,12 +4,12 @@ services:
     hostname: mongo
     image: mongo:4.4
     container_name: mongo
-    restart: unless-stopped
+    restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
     volumes:
-      - /home/data/mongo:/data/db
+      - ~/data/mongo:/data/db
     ports:
       - "27017:27017"
     networks:

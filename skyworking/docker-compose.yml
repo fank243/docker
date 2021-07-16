@@ -1,0 +1,42 @@
+version: '3.7'
+services:
+  # https://github.com/apache/skywalking-docker/blob/master/compose/docker-compose.yml
+
+  # https://hub.docker.com/r/apache/skywalking-oap-server
+  skywalking-oap:
+    image: apache/skywalking-oap-server:8.6.0-es7
+    container_name: skywalking-oap
+    restart: always
+    ports:
+      - 11800:11800
+      - 12800:12800
+    healthcheck:
+      test: [ "CMD-SHELL", "/skywalking/bin/swctl ch" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    environment:
+      SW_STORAGE: elasticsearch7
+      SW_STORAGE_ES_CLUSTER_NODES: 127.0.0.1:9200
+      SW_HEALTH_CHECKER: default
+      SW_TELEMETRY: prometheus
+      JAVA_OPTS: "-Xms512m -Xmx1024m"
+
+  # https://hub.docker.com/r/apache/skywalking-ui
+  skywalking-ui:
+    hostname: skywalking-ui
+    image: apache/skywalking-ui:8.6.0
+    container_name: skywalking
+    restart: always
+    environment:
+      - SW_OAP_ADDRESS=127.0.0.1:12800
+    ports:
+      - "8080:8080"
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge

@@ -1,8 +1,8 @@
-FROM fank243/oraclejdk:11.0.11
+FROM fank243/oraclejdk:1.8.0_291
 
 WORKDIR /app
 
-COPY sentinel-dashboard-1.8.1.jar app.jar
+COPY sentinel-dashboard-1.8.2.jar app.jar
 
 RUN chmod -R +x app.jar
 

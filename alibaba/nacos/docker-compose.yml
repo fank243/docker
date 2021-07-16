@@ -1,15 +1,15 @@
 version: "3.7"
 services:
   nacos:
-    image: nacos/nacos-server:2.0.1 # 2.0.1
+    image: nacos/nacos-server:2.0.1 # 2.0.2
     hostname: nacos
     container_name: nacos
     #network_mode: bridge
-    env_file:
-      - ./env/nacos-standlone-mysql.env
+    #env_file:
+    #  - ./env/nacos-standlone-mysql.env
     volumes:
-      - /home/logs/nacos:/home/nacos/logs
-      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
+      - ~/logs/nacos:/home/nacos/logs
+      - /init.d/custom.properties:/home/nacos/init.d/custom.properties
     environment:        
       - JVM_XMS=128m     # 设定程序启动时占用内存大小
       - JVM_XMX=128m     # 设定程序运行期间最大可占用的内存大小

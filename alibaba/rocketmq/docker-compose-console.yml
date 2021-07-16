@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  rmqconsole:
+    image: apacherocketmq/rocketmq-console:2.0.0
+    hostname: rmqconsole
+    container_name: rmqconsole
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - JAVA_OPT_EXT=-Xms512M -Xmx512M -Xmn128m
+      - JAVA_OPTS=-Drocketmq.namesrv.addr=127.0.0.1:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+    volumes:
+      - ~/logs/rocketmq/console:/root/logs
+    ports:
+      - "8080:8080"
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge
+      
