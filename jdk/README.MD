@@ -15,16 +15,19 @@ JAVA_VERSION=JDK版本 # 即.tar.gz文件名称
 3. 构建镜像
 
 ```bash
-docker build -t jdk:1.8.0 .
+docker build -t jdk:1.8.0_302 .
 ```
 
 4. 验证镜像
 
 ```bash
 # 验证
-docker run --name jdk -it jdk:1.8.0 sh
+docker run --name jdk -it jdk:1.8.0_302 sh
 
 java -version
+
+# +0800 时区验证
+date -R
 ```
 
 4. 推送镜像到hub.docker.com
@@ -33,10 +36,9 @@ java -version
 docker login
 
 # tag 
-docker tag jdk:1.8.0 fank243/oraclejdk:1.8.0_292
+docker tag jdk:1.8.0_302 fank243/dragonwell:1.8.0_302
 
 # push
-docker push fank243/oraclejdk:1.8.0_292
-
+docker push fank243/dragonwell:1.8.0_302
 
 ```
