@@ -4,17 +4,10 @@ services:
     image: ffdfgdfg/nps:latest
     hostname: nps
     container_name: nps
+    network_mode: host
     restart: unless-stopped
     volumes:
-      - ./nps-conf:/nps/conf
+      - ./nps-conf:/conf
     ports:
       - "8000-8002:8000-8002"
-    networks:
-      - docker-network
-  
-networks:
-  docker-network:
-    name: docker-network
-    driver: bridge
-        
   
