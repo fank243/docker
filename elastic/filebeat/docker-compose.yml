@@ -4,7 +4,7 @@ services:
     hostname: filebeat
     container_name: filebeat
     # https://hub.docker.com/r/elastic/filebeat
-    image: elastic/filebeat:7.6.1
+    image: elastic/filebeat:7.15.0
     restart: always
     # Need to override user so we can access the log files, and docker.soc
     user: root         

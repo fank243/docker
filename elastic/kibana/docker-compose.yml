@@ -4,7 +4,7 @@ services:
     hostname: kibana
     container_name: kibana
     # https://hub.docker.com/r/elastic/filebeat
-    image: elastic/kibana:7.6.1
+    image: elastic/kibana:7.15.0
     restart: always
     environment: 
       - TZ=Asia/Shanghai                # 设置上海时区 +0800

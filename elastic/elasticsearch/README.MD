@@ -36,3 +36,21 @@ cluster.initial_master_nodes = ["node-1"]
 ```
 
 3.2 或者在docker-compose.yml中增加environment `discovery.type=single-node` 配置，以单例模式运行
+
+## 开启认证
+
+1. `elasticsearch.yml` 开启认证
+
+```yaml
+xpack.security.enabled: true
+```
+
+2. 启动容器并进入容器内部设置认证密码
+
+```yaml
+# 进入容器
+docker exec -it elasticsearch bash
+
+# 设置认证密码，默认账号：elastic
+elasticsearch-setup-passwords interactive
+```

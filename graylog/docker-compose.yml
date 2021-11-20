@@ -2,22 +2,38 @@ version: '3.7'
 services:
   graylog:
     hostname: graylog
-    image: graylog/graylog:4.1
+    image: graylog/graylog:4.2
     container_name: graylog
     restart: always
     volumes:
       # Mount local configuration directory into Docker container
       - ./conf/graylog.conf:/usr/share/graylog/data/config/graylog.conf
       - ~/data/graylog:/usr/share/graylog/data/journal
-      # - ./geoLite/GeoLite2-City.mmdb:/etc/graylog/server/GeoLite2-City.mmdb # IP地址库
-    networks:
-      - docker-network
+      - ./geoip/GeoLite2-City.mmdb:/etc/graylog/server/GeoLite2-City.mmdb # IP地址库
     ports:
       # Graylog web interface and REST API
       - 9000:9000
+      - 5044:5044
       - 12201-12202:12201-12202/udp
 
-networks:
-  docker-network:
-    name: docker-network
-    driver: bridge
+  sidecar:
+    hostname: sidecar
+    image: markusgulden/graylog2-sidecar-docker:latest
+    container_name: sidecar
+    restart: always
+    environment:
+        # graylog web 地址
+        - GS_SERVER_URL=http://graylog:9000/api/  
+        # 节点名称
+        - GS_NODE_Name="XiaoXinPro" 
+        # 节点唯一ID，自定义即可
+        - GS_NODE_ID="8148fcbc-9d30-4b2c-99d4-b1455b1f668a" 
+        # 粘贴在graylog web上面创建的Api Token
+        - GS_SERVER_API_TOKEN=stegknp8qn35r64549bpienf1vro86tmpt9ks783v34182q8dl0
+        # 需要收集的日志文件，此处指的是容器的目录
+        - GS_LIST_LOG_FILES=/var/log/nginx
+    volumes:
+        # 将宿主机中的日志目录映射到容器中
+        - /var/log/nginx:/var/log/nginx    
+    links:
+      - graylog
