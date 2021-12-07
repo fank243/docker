@@ -1,0 +1,25 @@
+version: '3.7'
+services: 
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    hostname: gitlab
+    container_name: gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://10.23.77.167'
+        # Add any other gitlab.rb configuration here, each on its own line
+    volumes:
+        - './config:/etc/gitlab'
+        - 'E:/logs/gitlab:/var/log/gitlab'
+        - 'E:/data/gitlab:/var/opt/gitlab'
+    networks:
+      - docker-network
+    ports:
+      - '80:80'
+      - '443:443'
+      - '22:22'
+
+networks:
+  docker-network:
+    name: docker-network
+    driver: bridge
