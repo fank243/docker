@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  zentao:
+    image: easysoft/zentao:latest
+    hostname: zentao
+    container_name: zentao
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - /home/data/zentao/zentaopms:/www/zentaopms
+      - /home/data/zentao/mysqldata:/var/lib/mysql
+    ports:
+      - 8100:80
+      - 13306:3306
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    name: docker-network
+    driver: bridge
+      

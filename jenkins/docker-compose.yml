@@ -9,7 +9,7 @@ services:
       - TZ=Asia/Shanghai        # 更换为国内时区
     volumes:
       # 必须授权 chown 1000.1000 -R /home/data/jenkins_home
-      - ~/data/jenkins_home:/var/jenkins_home
+      - /home/data/jenkins_home:/var/jenkins_home
     ports:
       - "8080:8080"
       - "50000:50000"

@@ -10,7 +10,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./conf:/etc/nginx/conf.d
-      - ~/www/html:/home/www/html
+      - /home/data/nginx/html:/home/www/html
     #  - /data/logs/nginx:/var/log/nginx # 如果需要开启gelf日志，则不能将日志从容器映射到本地
     ports:
       - "80:80"

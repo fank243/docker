@@ -10,8 +10,8 @@ services:
         # Add any other gitlab.rb configuration here, each on its own line
     volumes:
         - './config:/etc/gitlab'
-        - 'E:/logs/gitlab:/var/log/gitlab'
-        - 'E:/data/gitlab:/var/opt/gitlab'
+        - '/home/logs/gitlab:/var/log/gitlab'
+        - '/home/data/gitlab:/var/opt/gitlab'
     networks:
       - docker-network
     ports:

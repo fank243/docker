@@ -8,7 +8,7 @@ services:
     volumes:
       # Mount local configuration directory into Docker container
       - ./conf/graylog.conf:/usr/share/graylog/data/config/graylog.conf
-      - ~/data/graylog:/usr/share/graylog/data/journal
+      - /home/data/graylog:/usr/share/graylog/data/journal
       - ./geoip/GeoLite2-City.mmdb:/etc/graylog/server/GeoLite2-City.mmdb # IP地址库
     ports:
       # Graylog web interface and REST API

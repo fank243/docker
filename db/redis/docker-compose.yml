@@ -9,9 +9,9 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - ~/data/redis:/data/redis/data   # redis.conf中的dir路径也需保持一致
+      - /home/data/redis:/data/redis/data   # redis.conf中的dir路径也需保持一致
       - ./conf:/etc/redis
-      - ~/logs/redis:/data/redis/logs
+      - /home/logs/redis:/data/redis/logs
     ports:
       - "6379:6379"
     sysctls:

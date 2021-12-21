@@ -6,7 +6,7 @@ services:
     container_name: gitea
     restart: always
     volumes:
-      - ~/data/gitea:/data
+      - /home/data/gitea:/data
     networks:
       - docker-network
     ports:

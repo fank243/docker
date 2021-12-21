@@ -9,7 +9,7 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ./sentinel.properties:/app/application.properties
-      - ~/logs/sentinel:/root/logs/csp
+      - /home/logs/sentinel:/root/logs/csp
     ports:
       - "8858:8858"
       - "8719:8719"

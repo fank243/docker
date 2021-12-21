@@ -11,8 +11,8 @@ services:
       JAVA_OPT_EXT: "-Duser.home=/home/rocketmq -Xms512M -Xmx512M -Xmn128m"
     volumes:
       # chmod 777
-      - ~/docker/rocketmq/logs:/home/rocketmq/logs
-      - ~/docker/rocketmq/store:/home/rocketmq/store
+      - /home/logs/rocketmq:/home/rocketmq/logs
+      - /home/data/rocketmq/store:/home/rocketmq/store
     ports:
       - "9876:9876"
     networks:
@@ -30,8 +30,8 @@ services:
       JAVA_OPT_EXT: "-Duser.home=/home/rocketmq -Xms512M -Xmx512M -Xmn128m"
     volumes:
       # chmod 777
-      - ~/docker/rocketmq/logs:/home/rocketmq/logs
-      - ~/docker/rocketmq/store:/home/rocketmq/store
+      - /home/logs/rocketmq:/home/rocketmq/logs
+      - /home/data/rocketmq/store:/home/rocketmq/store
       - ./conf/broker.conf:/etc/rocketmq/broker.conf
     ports:
       - 10909:10909

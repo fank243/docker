@@ -10,7 +10,7 @@ services:
       - TZ=Asia/Shanghai                # 设置上海时区 +0800
     volumes:
       - TAKE_FILE_OWNERSHIP=true
-      - ~/data/elk/kibana:/usr/share/kibana/data    # 数据目录
+      - /home/data/elk/kibana:/usr/share/kibana/data    # 数据目录
       - ./conf:/usr/share/kibana/config    # 配置目录
     ports:
       - 5601:5601
