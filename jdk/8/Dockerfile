@@ -1,7 +1,7 @@
-FROM frolvlad/alpine-glibc:latest
+FROM frolvlad/alpine:latest
 
 # JDK 版本号
-ARG JAVA_VERSION=jdk-17.0.1
+ARG JAVA_VERSION=jdk1.8.0_302
 
 WORKDIR /usr/local/java
 

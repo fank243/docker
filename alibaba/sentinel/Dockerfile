@@ -1,4 +1,4 @@
-FROM fank243/oraclejdk:1.8.0_291
+FROM fank243/dragonwell:1.8.0_302
 
 WORKDIR /app
 

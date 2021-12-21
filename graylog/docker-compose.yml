@@ -25,7 +25,7 @@ services:
         # graylog web 地址
         - GS_SERVER_URL=http://graylog:9000/api/  
         # 节点名称
-        - GS_NODE_Name="XiaoXinPro" 
+        - GS_NODE_NAME="XiaoXinPro" 
         # 节点唯一ID，自定义即可
         - GS_NODE_ID="8148fcbc-9d30-4b2c-99d4-b1455b1f668a" 
         # 粘贴在graylog web上面创建的Api Token

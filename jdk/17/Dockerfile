@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-glibc:latest
+FROM alpine:latest
 
 # JDK 版本号
 ARG JAVA_VERSION=jdk-17.0.1
