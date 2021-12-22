@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:8-buster
 
 ARG version=2.0.6
 WORKDIR /kafka-eagle
