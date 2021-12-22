@@ -1,8 +1,8 @@
 version: '3.7'
 services:
   nginx:
+    image: nginx:1.21-alpine
     hostname: nginx
-    image: nginx:1.21
     container_name: nginx
     restart: always
     environment:

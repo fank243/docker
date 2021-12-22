@@ -1,8 +1,8 @@
 version: '3.7'
 services:
-  yapi:
+  nextcloud:
+    image: nextcloud:23.0
     hostname: nextcloud
-    image: nextcloud:latest
     container_name: nextcloud
     restart: unless-stopped
     volumes:

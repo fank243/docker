@@ -4,7 +4,7 @@ services:
     hostname: logstash
     container_name: logstash
     # https://hub.docker.com/r/elastic/logstash
-    image: elastic/logstash:7.15.0
+    image: elastic/logstash:7.16.2
     restart: always
     user: root   
     environment:

@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   zentao:
-    image: easysoft/zentao:latest
+    image: easysoft/zentao:15.7
     hostname: zentao
     container_name: zentao
     environment:

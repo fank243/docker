@@ -3,8 +3,7 @@ services:
   es:
     hostname: es
     container_name: es
-    # https://hub.docker.com/r/elastic/elasticsearch
-    image: elastic/elasticsearch:7.15.2
+    image: elastic/elasticsearch:7.16.2
     restart: always
     environment:
       - ES_JAVA_OPTS=-Xmx256m -Xms256m  # jvm参数

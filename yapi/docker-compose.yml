@@ -2,7 +2,7 @@ version: '3.7'
 services:
   yapi:
     hostname: yapi
-    image: jayfong/yapi:1.9.2
+    image: jayfong/yapi:1.10.2
     container_name: yapi
     restart: unless-stopped
     volumes:

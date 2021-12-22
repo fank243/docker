@@ -1,10 +1,8 @@
 version: '3.7'
 services:
   # https://github.com/apache/skywalking-docker/blob/master/compose/docker-compose.yml
-
-  # https://hub.docker.com/r/apache/skywalking-oap-server
   skywalking-oap:
-    image: apache/skywalking-oap-server:8.6.0-es7
+    image: apache/skywalking-oap-server:8.9.1
     container_name: skywalking-oap
     restart: always
     ports:
@@ -23,10 +21,9 @@ services:
       SW_TELEMETRY: prometheus
       JAVA_OPTS: "-Xms512m -Xmx1024m"
 
-  # https://hub.docker.com/r/apache/skywalking-ui
   skywalking-ui:
+    image: apache/skywalking-ui:8.9.1
     hostname: skywalking-ui
-    image: apache/skywalking-ui:8.6.0
     container_name: skywalking
     restart: always
     environment:
